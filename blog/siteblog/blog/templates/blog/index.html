@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }} : {{ block.super }}{% endblock %}
+
+{% block content %}
+
+{% include 'inc/_section_text.html' %}
+
+{% include 'inc/_section_post.html' %}
+
+{% endblock %}

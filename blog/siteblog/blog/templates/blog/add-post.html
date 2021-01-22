@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Новый пост : {{ block.super }}{% endblock %}
+
+{% block content %}
+
+<section class="blog-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="blog-post-area-style">
+
+                <h1>Add post</h1>
+
+                    {% if form.is_multipart %}
+                    <form enctype="multipart/form-data"  action="{% url 'add-post' %}" method="post" >
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+
+                    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 20px; margin-bottom: 20px ">Add post</button>
+
+                    </form>
+
+                    {% else %}
+                     <form   action="{% url 'add-post' %}" method="post">
+                         {% csrf_token %}
+                         {{ form.as_p }}
+
+                    {% endif %}
+                     </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
+

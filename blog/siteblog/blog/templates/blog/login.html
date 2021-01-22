@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Авторизация : {{ block.super }}{% endblock %}
+
+{% block content %}
+
+
+<section class="blog-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="blog-post-area-style">
+
+                <h1>Авторизация</h1>
+
+                <form method="post">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-dark btn-block"><b>Авторизация</b></button>
+                    <br>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{% endblock %}

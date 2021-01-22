@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Регистрация : {{ block.super }}{% endblock %}
+
+{% block content %}
+
+
+<section class="blog-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="blog-post-area-style">
+
+                <h1>Регистрация</h1>
+
+                <form method="post">
+
+                    {% if messages %}
+
+        {% for message in messages %}
+
+            {% if message.tags == 'error' %}
+
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+
+            {% endif %}
+
+
+
+        {% endfor %}
+
+        {% endif %}
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-info btn-block"><b>Регистрация</b></button>
+                    <br>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

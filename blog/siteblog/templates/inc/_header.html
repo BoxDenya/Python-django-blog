@@ -1,0 +1,57 @@
+{% load menu_tag %}
+<header class="header">
+    <div class="container">
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                {% if message.tags == 'error' %}
+
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+
+                 {% else %}
+
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="logo">
+                    <h2><a href="{% url 'home' %}">Classic</a></h2>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+
+                {% show_menu_tag %}
+
+            </div>
+
+            <div class="col-md-2">
+                <div class="logo">
+                    {% if request.user.is_authenticated %}
+                    <h3> User, {{ user.username }} | <a href="{% url 'logout' %}">Exit</a></h3>
+                    {% else %}
+                    <h3><a href="{% url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></h3>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</header>
